@@ -12,7 +12,6 @@ app.use((req, res, next) => {
     const now = new Date().toString();
     const log = `${now}: ${req.method} ${req.url}`;
 
-    console.log(log);
     fs.appendFile('server.log', log + '\n', (err) => {
         if(err) console.log('Unable to append to server.log');
     });
@@ -39,6 +38,13 @@ app.get('/', (req, res) => {
     res.render('home.hbs', {
         pageTitle: 'Home Page',
         welcomeMessage: 'Welcome to my website'
+    });
+});
+
+app.get('/project', (req, res) => {
+    res.render('project.hbs', {
+        pageTitle: 'Project Page',
+        projectMessage: 'My projects'
     });
 });
 
